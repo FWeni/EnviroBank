@@ -1,4 +1,4 @@
-package com.enviro.assessment.grad001.FlorahWeni.model;
+package com.enviro.assessment.grad001.FlorahWeni.imgFile;
 
 import java.io.*;
 import java.net.URI;

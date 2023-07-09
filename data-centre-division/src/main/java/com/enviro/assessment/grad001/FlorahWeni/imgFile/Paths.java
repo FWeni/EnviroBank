@@ -1,4 +1,4 @@
-package com.enviro.assessment.grad001.FlorahWeni.model;
+package com.enviro.assessment.grad001.FlorahWeni.imgFile;
 
 public class Paths {
     private final String specificDir;
