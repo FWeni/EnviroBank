@@ -21,6 +21,12 @@ List<Profile> profiles = new ArrayList<Profile>();
 profileRepository.findAll().forEach(profile -> profiles.add(profile));
 return profiles;
 }
+
+public URL getDataByPath(String name,String sname)
+{
+    Profile imgProf = profileRepository.findByNameAndSurname(name,sname);
+    return imgProf.getHttpImgLink();
+}
 public Profile getProfileById(int id)
 {
 return profileRepository.findById(id).get();
@@ -33,8 +39,10 @@ public void createImgProfile(Profile profile)
 {
 profileRepository.save(profile);
 }
+
 public void deleteImgProfile(int id)
 {
-profileRepository.deleteById(id);
+    profileRepository.deleteById(id);
+
 }
 }

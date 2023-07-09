@@ -1,6 +1,5 @@
 package com.enviro.assessment.grad001.FlorahWeni.controller;
 
-import java.net.URL;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +25,20 @@ public class ImageController {
         return profileService.getProfileById(id);
     }
 
-    @GetMapping(value = "/{name}/{surname}/{\\w\\.\\w}")
+    @GetMapping(value = "/{name}/{surname}/{file:[\\w\\.]+}")
     public FileSystemResource getHttpImageLink(@PathVariable String name, @PathVariable String surname) {
-        URL imageLink = profileService.getImgProfileLink(name, surname);
-        return new FileSystemResource(String.valueOf(imageLink));
+        String imageLink = profileService.getDataByPath(name, surname).getFile();
+        return new FileSystemResource(imageLink);
     }
     @PostMapping(value = "/profile")
-    public int createProfile(@RequestBody Profile profile) {
+    public String createProfile(@RequestBody Profile profile) {
         profileService.createImgProfile(profile);
-        return profile.getId();
+        return profile.getId()+": Profile is created successfully";
     }
-     @DeleteMapping(value = "/{name}/{surname}/{id})")
-     public void deleteProfile(@PathVariable("id") int id) {
+     @DeleteMapping(value = "/profile/{id}")
+     public String deleteProfile(@PathVariable("id") int id) {
          profileService.deleteImgProfile(id);
+        return ": Profile is deleted successfully";
      }
 
 }
